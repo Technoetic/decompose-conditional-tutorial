@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="app-build" content="__BUILD_ID__">
+  <meta name="description" content="카페의 여름 행사로 배우는 Decompose Conditional. 복잡한 조건과 두 갈래 계산에 이름을 붙이고, 결과가 같은지 직접 확인해 보세요.">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>IF / CLEAR — 조건문을 문장처럼</title>
+  <link rel="icon" type="image/svg+xml" href="__ICON_URL__">
+  <link rel="stylesheet" href="__STYLE_URL__">
+  <script type="module" src="__ENTRY_URL__"></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 바로가기</a>
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="#/" data-route="/" aria-label="IF CLEAR 처음으로"><span class="brand-symbol" aria-hidden="true">if<span>/</span></span><span>IF / CLEAR<small>조건문을 문장처럼</small></span></a>
+      <div class="header-meta"><span class="series-label">REFACTORING WORKSHOP</span><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false">움직임 줄이기</button></div>
+    </header>
+    <nav id="lesson-nav" class="lesson-nav" aria-label="학습 단계"></nav>
+    <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+    <main id="main" tabindex="-1" aria-live="off"><div class="loading" role="status">카페 실험실을 여는 중…</div></main>
+    <footer class="site-footer"><span>한 가지 카페 규칙, 더 명확한 세 가지 이름.</span><a href="https://refactoring.com/catalog/decomposeConditional.html" target="_blank" rel="noopener noreferrer">Martin Fowler의 원전 ↗</a></footer>
+  </div>
+  <dialog id="guard" class="guard-dialog" aria-labelledby="guard-title" aria-describedby="guard-description">
+    <p class="eyebrow">작성한 내용을 지켜요</p>
+    <h2 id="guard-title">입력을 남겨 두고 이동할까요?</h2>
+    <p id="guard-description"></p>
+    <p id="guard-error" class="error" role="alert"></p>
+    <div class="guard-actions"><button type="button" class="button secondary" id="guard-stay">계속 작성</button><button type="button" class="button secondary" id="guard-discard">입력 취소 후 이동</button><button type="button" class="button" id="guard-save">적용·저장하고 이동</button></div>
+  </dialog>
+  <noscript>이 튜토리얼의 실험을 사용하려면 브라우저에서 JavaScript를 켜 주세요.</noscript>
+</body>
+</html>

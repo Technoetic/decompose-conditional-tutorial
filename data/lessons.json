@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "lessons": [
+    {
+      "id": "intro",
+      "title": "조건문에 의도를 담다",
+      "intro": "가상의 카페 주문 한 건으로 Decompose Conditional을 익혀 봅니다. 2026년 6월 1일부터 8월 31일까지는 포장비가 포함된 잔당 4,000원. 그 밖에는 잔당 4,500원에 주문당 포장비 500원이 붙습니다.",
+      "takeaway": "조건, 참일 때의 계산, 거짓일 때의 계산에 각각 이름을 붙입니다. 가격 규칙은 그대로입니다.",
+      "kicker": "01 / 한 주문, 세 가지 의도"
+    },
+    {
+      "id": "read",
+      "title": "먼저, 세 부분을 읽기",
+      "intro": "이 날짜가 여름 행사 기간인지 판단하는 조건, 행사 가격을 계산하는 참 분기, 일반 가격을 계산하는 거짓 분기를 골라 보세요. 날짜와 잔 수를 바꾸면 어느 분기를 지나는지 확인할 수 있습니다.",
+      "takeaway": "조건은 언제 적용하는지, 두 분기는 각각 무엇을 계산하는지 설명합니다. 시작일과 종료일은 모두 행사에 포함됩니다.",
+      "kicker": "02 / 조건 · 참 분기 · 거짓 분기"
+    },
+    {
+      "id": "split",
+      "title": "각 역할에 이름 붙이기",
+      "intro": "세 함수 이름을 알맞은 자리에 배치해 보세요. isSummer는 적용 여부를 묻고, summerCharge는 행사 금액을, regularCharge는 일반 금액을 계산합니다. 버튼으로 선택하고 배치할 수 있습니다.",
+      "takeaway": "좋은 이름은 표현식의 세부 계산을 몰라도 의도를 읽게 합니다. 이 예에서는 조건과 두 분기를 각각 함수로 추출합니다.",
+      "kicker": "03 / 이름이 설명이 되는 자리"
+    },
+    {
+      "id": "lab",
+      "title": "경계에서 같은지 확인하기",
+      "intro": "5월 31일, 6월 1일, 8월 31일, 9월 1일의 리팩터링 전후 금액을 비교해 보세요. ‘시작일 제외 오류’를 켜면 6월 1일을 잘못 제외하는 별도 실험이 됩니다. 초기화하면 올바른 기준으로 돌아갑니다.",
+      "takeaway": "리팩터링은 동작을 보존합니다. >=를 >로 바꾸어 시작일의 가격이 달라졌다면 그것은 이 실험에 주입한 버그입니다.",
+      "kicker": "04 / 같은 결과를 확인하는 실험실"
+    },
+    {
+      "id": "practice",
+      "title": "여섯 질문으로 내 말 만들기",
+      "intro": "세 역할, 바뀌면 안 되는 동작, 날짜 경계와 주문당 포장비를 점검해 보세요. 선택 뒤 설명을 읽고, 배운 점을 최대 2,000자로 적어 저장할 수 있습니다.",
+      "takeaway": "이름을 나누는 이유를 설명하고, 바뀌지 않아야 할 결과를 구체적인 예로 확인할 수 있으면 됩니다.",
+      "kicker": "05 / 확인하고 기록하기"
+    },
+    {
+      "id": "code",
+      "title": "읽히는 조건문을 가져가기",
+      "intro": "같은 입력 검증을 사용하는 완전한 전후 코드를 비교해 보세요. 올바른 리팩터링 코드는 조건의 경계와 계산식을 유지합니다. 공식 카탈로그의 Decompose Conditional과 Extract Function도 함께 읽을 수 있습니다.",
+      "takeaway": "모든 if를 추출할 필요는 없습니다. 이름이 이해를 돕는지 판단하고, 값·부수 효과·평가 순서가 보존되는지 확인하세요. 추출만으로 속도가 빨라진다고 보장할 수는 없습니다.",
+      "kicker": "06 / 구조는 바꾸고, 동작은 지키기"
+    }
+  ],
+  "questions": [
+    {
+      "id": "three-roles",
+      "prompt": "이 예에서 조건, 참 분기, 거짓 분기에 대응하는 함수 이름의 올바른 순서는 무엇인가요?",
+      "options": [
+        { "id": "roles-correct", "text": "isSummer → summerCharge → regularCharge" },
+        { "id": "roles-swapped", "text": "summerCharge → isSummer → regularCharge" },
+        { "id": "roles-reversed", "text": "isSummer → regularCharge → summerCharge" }
+      ],
+      "answer": "roles-correct",
+      "explanation": "isSummer는 행사 기간인지 묻는 조건입니다. 참이면 summerCharge로 행사 금액을, 거짓이면 regularCharge로 일반 금액을 계산합니다. 세 이름이 각 부분의 의도를 드러냅니다."
+    },
+    {
+      "id": "preserve-behavior",
+      "prompt": "Decompose Conditional을 올바르게 적용했다면 무엇이 유지되어야 하나요?",
+      "options": [
+        { "id": "preserve-speed", "text": "추출한 함수 덕분에 실행 시간이 반드시 줄어든다." },
+        { "id": "preserve-result", "text": "같은 입력의 결과와 관찰 가능한 동작이 유지된다." },
+        { "id": "preserve-discount", "text": "이해하기 쉬워지도록 행사 기간도 함께 늘린다." }
+      ],
+      "answer": "preserve-result",
+      "explanation": "리팩터링은 구조를 바꾸면서 관찰 가능한 동작을 보존합니다. 이 예에서는 같은 입력의 가격과 분기가 같아야 합니다. 부수 효과가 있는 코드라면 발생 여부와 평가 순서도 지켜야 하며, 함수 추출이 속도 향상을 보장하지는 않습니다."
+    },
+    {
+      "id": "inclusive-boundary",
+      "prompt": "2026년 6월 1일과 8월 31일에 각각 2잔을 주문하면 얼마인가요?",
+      "options": [
+        { "id": "boundary-both", "text": "두 날짜 모두 8,000원" },
+        { "id": "boundary-first", "text": "6월 1일은 9,500원, 8월 31일은 8,000원" },
+        { "id": "boundary-neither", "text": "두 날짜 모두 9,500원" }
+      ],
+      "answer": "boundary-both",
+      "explanation": "행사 조건은 date >= start && date <= end입니다. 시작일과 종료일 모두 포함하므로 두 날짜 모두 2 × 4,000원 = 8,000원입니다. 행사 가격에는 포장비가 포함되어 있습니다."
+    },
+    {
+      "id": "per-order-fee",
+      "prompt": "행사 밖인 2026년 9월 1일에 3잔을 한 번에 주문하면 얼마인가요?",
+      "options": [
+        { "id": "fee-per-cup", "text": "15,000원: (4,500 + 500) × 3" },
+        { "id": "fee-missing", "text": "13,500원: 4,500 × 3" },
+        { "id": "fee-per-order", "text": "14,000원: 4,500 × 3 + 500" }
+      ],
+      "answer": "fee-per-order",
+      "explanation": "일반 가격의 포장비 500원은 잔마다가 아니라 주문 한 건에 한 번 붙습니다. 따라서 4,500원 × 3잔 + 500원 = 14,000원입니다. 추출하면서 덧셈을 곱셈 안으로 옮기면 가격 규칙이 달라집니다."
+    },
+    {
+      "id": "bug-versus-refactor",
+      "prompt": "조건의 >=를 >로 바꾼 뒤 6월 1일 2잔이 8,000원에서 9,500원이 되었습니다. 어떻게 설명해야 하나요?",
+      "options": [
+        { "id": "bug-acceptable", "text": "함수 이름이 명확해졌으므로 올바른 리팩터링이다." },
+        { "id": "bug-explicit", "text": "시작일의 동작을 바꾼 버그이며, 올바른 리팩터링과 구분한다." },
+        { "id": "bug-ignore", "text": "하루만 달라지므로 동작 보존 여부를 확인할 필요가 없다." }
+      ],
+      "answer": "bug-explicit",
+      "explanation": "원래 포함되던 시작일을 제외했으므로 같은 입력의 결과가 달라졌습니다. 이 실험에서는 의도적으로 넣은 경계 버그입니다. 함수 추출 자체와 구분하고, 올바른 비교 연산자로 되돌린 뒤 경계 날짜를 다시 확인해야 합니다."
+    },
+    {
+      "id": "avoid-overextraction",
+      "prompt": "이미 짧고 의도가 분명한 if를 만났을 때 가장 적절한 판단은 무엇인가요?",
+      "options": [
+        { "id": "extract-always", "text": "모든 조건과 분기를 예외 없이 별도 함수로 만든다." },
+        { "id": "extract-never", "text": "조건문에는 함수 추출을 적용하지 않는다." },
+        { "id": "extract-purpose", "text": "새 이름이 이해를 돕는지 보고, 이점이 없다면 그대로 둔다." }
+      ],
+      "answer": "extract-purpose",
+      "explanation": "Decompose Conditional은 의도를 드러낼 때 유용한 선택입니다. 이미 충분히 읽히는 짧은 if라면 추출이 이름과 이동만 늘릴 수 있습니다. 추출 횟수보다 독자가 조건과 각 분기의 뜻을 이해하기 쉬운지가 기준입니다."
+    }
+  ],
+  "sources": [
+    { "title": "Martin Fowler · Decompose Conditional", "url": "https://refactoring.com/catalog/decomposeConditional.html" },
+    { "title": "Martin Fowler · Extract Function", "url": "https://refactoring.com/catalog/extractFunction.html" }
+  ]
+}
