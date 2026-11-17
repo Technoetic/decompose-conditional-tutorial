@@ -1,6 +1,6 @@
 # Verification record
 
-Status: local source, tests and browser acceptance are complete. Public deployment checks are pending.
+Status: local source, tests and browser acceptance are complete. The first GitHub Pages deployment and public integrity checks passed; an already-open public A-to-B update is being checked.
 
 - `npm test`: 43 of 43 Node tests passed. The checks include all 365 valid dates and 12 cup quantities, boundary fixtures, invalid inputs, storage and update behavior.
 - `npm run build`: completed with build ID `dc-61e15ae4ceb7`.
@@ -16,7 +16,9 @@ Aside browser acceptance completed 38 distinct checks: all three function roles,
 
 Aside coordinate clicks required explicit scrolling; DOM click dispatch was used for modal/update checks. Hash history used browser history APIs because the CLI navigation helper waits for a full document load. Native mobile devices and native BFCache restoration were not tested. Screenshot capture failed; DOM layout and interaction checks do not establish pixel-perfect appearance.
 
-The GitHub Pages publication, workflow result, public manifest and asset hashes, public routes, and a real public A-to-B update transition remain unverified. The controller will record the actual outcomes and any limits after those checks.
+First Pages run `44002677060` succeeded for source `53d68a34e2d595e6f47ce962b41388880607bf53`. Public build `dc-0623a6061e70` passed SHA-256 checks for all 22 manifest files, all six screens at 1440/390px (12 layouts, no document overflow), matching embedded/version/manifest identities and an actual missing-asset 404. GitHub Pages returned `Cache-Control: max-age=600`; fresh version requests use a unique query. The local Windows working files and Git-normalized Linux source have different byte-derived build IDs; behavior is tested on both.
+
+A second deployment adds a concise footer reminder that calculation results stay the same. The already-open public A-to-B input-protection check is pending completion; its evidence will be recorded in the project handoff.
 
 ## Handoff
 
